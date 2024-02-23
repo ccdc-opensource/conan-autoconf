@@ -106,13 +106,12 @@ class AutoconfConan(ConanFile):
         self.cpp_info.resdirs = ["res"]
 
         bin_path = os.path.join(self.package_folder, "bin")
-
-        # TODO: to remove in conan v2
+        self.output.info("Appending PATH environment variable: {}".format(bin_path))
         self.env_info.PATH.append(bin_path)
-        self.env_info.AUTOCONF = "autoconf"
-        self.env_info.AUTORECONF = "autoreconf"
-        self.env_info.AUTOHEADER = "autoheader"
-        self.env_info.AUTOM4TE = "autom4te"
+        self.env_info.AUTOCONF = os.path.join(bin_path, "autoconf")
+        self.env_info.AUTORECONF = os.path.join(bin_path, "autoreconf")
+        self.env_info.AUTOHEADER = os.path.join(bin_path, "autoheader")
+        self.env_info.AUTOM4TE = os.path.join(bin_path, "autom4te")
 
 #        # TODO: These variables can be removed since the scripts now locate the resources
 #        #       relative to themselves.
