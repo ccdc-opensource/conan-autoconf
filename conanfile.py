@@ -109,15 +109,23 @@ class AutoconfConan(ConanFile):
         self.output.info("Appending PATH env var with : {}".format(bin_path))
         self.env_info.PATH.append(bin_path)
         autoconf = os.path.join(bin_path, "autoconf")
+        if self.settings.os == "Windows":
+            autoconf = autoconf + ".exe"
         self.output.info("Setting AUTOCONF to {}".format(autoconf))
         self.env_info.AUTOCONF = autoconf
         autoreconf = os.path.join(bin_path, "autoreconf")
+        if self.settings.os == "Windows":
+            autoreconf = autoreconf + ".exe"
         self.output.info("Setting AUTORECONF to {}".format(autoreconf))
         self.env_info.AUTORECONF = autoreconf
         autoheader = os.path.join(bin_path, "autoheader")
+        if self.settings.os == "Windows":
+            autoheader = autoheader + ".exe"
         self.output.info("Setting AUTOHEADER to {}".format(autoheader))
         self.env_info.AUTOHEADER = autoheader
         autom4te = os.path.join(bin_path, "autom4te")
+        if self.settings.os == "Windows":
+            autom4te = autom4te + ".exe"
         self.output.info("Setting AUTOM4TE to {}".format(autom4te))
         self.env_info.AUTOM4TE = autom4te
 
