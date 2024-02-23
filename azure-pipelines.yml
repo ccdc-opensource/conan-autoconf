@@ -8,7 +8,7 @@ resources:
 
 extends:
   # template: third-party-library-all-platforms-from-conan-center.yml@templates
-  template: third-party-library-all-platforms-from-local-recipe-split.yml@templates
+  template: third-party-library-all-platforms-from-local-recipe.yml@templates
   parameters:
     package: autoconf
     package_version: 2.71
