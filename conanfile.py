@@ -106,12 +106,20 @@ class AutoconfConan(ConanFile):
         self.cpp_info.resdirs = ["res"]
 
         bin_path = os.path.join(self.package_folder, "bin")
-        self.output.info("Appending PATH environment variable: {}".format(bin_path))
+        self.output.info("Appending PATH env var with : {}".format(bin_path))
         self.env_info.PATH.append(bin_path)
-        self.env_info.AUTOCONF = os.path.join(bin_path, "autoconf")
-        self.env_info.AUTORECONF = os.path.join(bin_path, "autoreconf")
-        self.env_info.AUTOHEADER = os.path.join(bin_path, "autoheader")
-        self.env_info.AUTOM4TE = os.path.join(bin_path, "autom4te")
+        autoconf = os.path.join(bin_path, "autoconf")
+        self.output.info("Setting AUTOCONF to {}".format(autoconf))
+        self.env_info.AUTOCONF = autoconf
+        autoreconf = os.path.join(bin_path, "autoreconf")
+        self.output.info("Setting AUTORECONF to {}".format(autoreconf))
+        self.env_info.AUTORECONF = autoreconf
+        autoheader = os.path.join(bin_path, "autoheader")
+        self.output.info("Setting AUTOHEADER to {}".format(autoheader))
+        self.env_info.AUTOHEADER = autoheader
+        autom4te = os.path.join(bin_path, "autom4te")
+        self.output.info("Setting AUTOM4TE to {}".format(autom4te))
+        self.env_info.AUTOM4TE = autom4te
 
 #        # TODO: These variables can be removed since the scripts now locate the resources
 #        #       relative to themselves.
