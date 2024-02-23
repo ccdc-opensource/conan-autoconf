@@ -7,11 +7,12 @@ resources:
       ref: refs/heads/development
 
 extends:
-  template: third-party-library-all-platforms-from-conan-center.yml@templates
+  # template: third-party-library-all-platforms-from-conan-center.yml@templates
+  template: third-party-library-all-platforms-from-local-recipe-split.yml@templates
   parameters:
     package: autoconf
     package_version: 2.71
-    source_repository: public-conan-center
+    # source_repository: public-conan-center
     destination_repository: ccdc-3rdparty-conan
     build_types:
       - Release
