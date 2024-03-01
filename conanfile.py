@@ -99,6 +99,14 @@ class AutoconfConan(ConanFile):
         rmdir(self, os.path.join(self.package_folder, "res", "info"))
         rmdir(self, os.path.join(self.package_folder, "res", "man"))
 
+        if self.settings.os == "Windows":
+            binpath = os.path.join(self.package_folder, "bin")
+            for filename in os.listdir(binpath):
+                fullpath = os.path.join(binpath, filename)
+                if not os.path.isfile(fullpath):
+                    continue
+                os.rename(fullpath, fullpath + ".exe")
+
     def package_info(self):
         self.cpp_info.frameworkdirs = []
         self.cpp_info.libdirs = []
