@@ -4,6 +4,7 @@ from conan.tools.files import copy, get, rmdir, apply_conandata_patches, replace
 from conan.tools.gnu import Autotools, AutotoolsToolchain
 from conan.tools.layout import basic_layout
 from conan.tools.microsoft import unix_path, is_msvc
+from conan import tools
 import os
 
 required_conan_version = ">=1.54.0"
@@ -118,22 +119,22 @@ class AutoconfConan(ConanFile):
         self.env_info.PATH.append(bin_path)
         autoconf = os.path.join(bin_path, "autoconf")
         if self.settings.os == "Windows":
-            autoconf = unix_path(autoconf) + ".exe"
+            autoconf = tools.unix_path(autoconf) + ".exe"
         self.output.info("Setting AUTOCONF to {}".format(autoconf))
         self.env_info.AUTOCONF = autoconf
         autoreconf = os.path.join(bin_path, "autoreconf")
         if self.settings.os == "Windows":
-            autoreconf = unix_path(autoreconf) + ".exe"
+            autoreconf = tools.unix_path(autoreconf) + ".exe"
         self.output.info("Setting AUTORECONF to {}".format(autoreconf))
         self.env_info.AUTORECONF = autoreconf
         autoheader = os.path.join(bin_path, "autoheader")
         if self.settings.os == "Windows":
-            autoheader = unix_path(autoheader) + ".exe"
+            autoheader = tools.unix_path(autoheader) + ".exe"
         self.output.info("Setting AUTOHEADER to {}".format(autoheader))
         self.env_info.AUTOHEADER = autoheader
         autom4te = os.path.join(bin_path, "autom4te")
         if self.settings.os == "Windows":
-            autom4te = unix_path(autom4te) + ".exe"
+            autom4te = tools.unix_path(autom4te) + ".exe"
         self.output.info("Setting AUTOM4TE to {}".format(autom4te))
         self.env_info.AUTOM4TE = autom4te
 
